@@ -1,5 +1,5 @@
 # Three Card Poker Game
-A simplified version of the Three Card Poker game written in Python 
+A simplified version of the Three Card Poker game written in Python. This implementation relies on Python language features including object-oriented programming, mutable compound data types (such as lists and dictionaries), and moderately complex control flows to support various parts of the game logic.
 
 ## Card.py
 
