@@ -2,6 +2,24 @@
 A simplified version of the Three Card Poker game written in Python. This implementation relies on Python language features including object-oriented programming, mutable compound data types (such as lists and dictionaries), and moderately complex control flows to support various parts of the game logic.
 
 ## Card.py
+### Classes
+The file contains implementations of the following three classes representing entities found in any card game:
+- Card: implements an abstraction of a playing card using two data attributes: rank and suit. The rank is an integer between 0 and 12, and is mapped to a string representation using the ranks list. The suit is an integer between 0 and 3, and is mapped to a string via the suits list. Note that both ranks and suits are class variables, which means they are available to all instances of the Card class as Card.ranks and Card.suits (see the code of the __str__() method for an example).
+- Deck: implements an abstraction of the standard 52 (13 ranks × 4 suits) deck of playing cards. The deck is represented as a list cards of Card objects. It includes the implementation of the constructor (the __init__() method), the __str__() method, and a number of place-holders for other methods whose functionality is described via their doc strings.
+- Hand: implements an abstraction of a hand in a card game. The Hand class is a subclass of Deck, which means that it inherits its cards attribute, and all its methods. It further refines the Deck class by adding the name attribute, which is a string holding the name of the person to whom the hand was dealt.
+
+### Functions
+- Card class:
+    - get_suit(), a getter method for the suit attribute of the Card class. Hint: use the code of the get_rank() method as an example. 
+- Deck class:
+    - shuffle(): randomly shuffles the list stored in self.cards in place using the random.shuffle() method of the Python’s random library.
+    - pop_cards(): takes a positive integer n as argument and removes the last n Card objects from the end of the self.cards list. Returns a new list instance comprised of the removed Card objects.
+    - add_cards(): takes a list cards of Card objects as argument, and extends self.cards with a deep copy of the cards parameter. You can use the copy.deepcopy() method of the Python’s copy library to generate a deep copy of a list. Note that we need a deep rather than a shallow copy since the list elements are by themselves mutable objects.
+    - clear_cards(): clears the content of self.cards. Be careful to NOT remove the entire self.cards attribute, which will happen e.g., if you use del self.cards.
+    - move_cards(): takes an instance hand of the Hand object and an integer n as arguments, and uses the add_cards() and pop_cards() methods to move n cards from self to hand.
+- Hand class:
+    - get_name(): a getter method for the name attribute of the Hand class.
+
 
 ## PokerHand.py
 
