@@ -3,7 +3,7 @@ A simplified version of the Three Card Poker game written in Python. This implem
 
 ## Card.py
 ### Classes
-The file contains implementations of the following three classes representing entities found in any card game:
+This file contains implementations of the following three classes representing entities found in any card game:
 - Card: implements an abstraction of a playing card using two data attributes: rank and suit. The rank is an integer between 0 and 12, and is mapped to a string representation using the ranks list. The suit is an integer between 0 and 3, and is mapped to a string via the suits list. Note that both ranks and suits are class variables, which means they are available to all instances of the Card class as Card.ranks and Card.suits (see the code of the __str__() method for an example).
 - Deck: implements an abstraction of the standard 52 (13 ranks × 4 suits) deck of playing cards. The deck is represented as a list cards of Card objects. It includes the implementation of the constructor (the __init__() method), the __str__() method, and a number of place-holders for other methods whose functionality is described via their doc strings.
 - Hand: implements an abstraction of a hand in a card game. The Hand class is a subclass of Deck, which means that it inherits its cards attribute, and all its methods. It further refines the Deck class by adding the name attribute, which is a string holding the name of the person to whom the hand was dealt.
@@ -22,6 +22,22 @@ The file contains implementations of the following three classes representing en
 
 
 ## PokerHand.py
+This file contains implementations of the following two classes representing a deck and a hand in the Three-Card Poker game:
+- ThreeCardPokerDeck: implements an abstraction of a Three-Card Poker Deck. It is a sub- class of the Deck class, which means that it inherits all of its data and method attributes, such as cards, shuffle(), etc. In addition, it implements a method deal_hand() that takes the hand name as optional argument, deals three cards from self.cards, and returns a new Hand object initialized with the cards that have been dealt.
+- ThreeCardPokerHand: implements an abstraction of a Three-Card Poker hand. It is a sub- class of Hand, and thus, inherits all attributes from both Deck and Hand. The provided implementation of the constructor __init__() takes a list of cards and an optional hand name as arguments, calls the constructor of the Hand class to initialize the parent object, and initializes the cards attribute with a copy of the card list argument.
+
+Since, as is discussed below, the Poker hand ranking is computed by considering the card ranks and the card suits in isolation, the code in the constructor extracts them into two separate list attributes: ranks and suits. The ranks list is then sorted in a reverse order of ranks to facilitate the rank comparison for Question 3. Finally, the _compute_rank() method is invoked to initialize the hand ranking.
+
+Write a code for the method _compute_rank() replacing the pass keyword. The method should use the lists self.ranks (the card ranks sorted in the reverse order), and self.suits (the card suits) created by the constructor to compute the hand ranking. The result must be an integer between 0 (the lowest) and 5 (the highest). It must be stored in the self.rank attribute, and computed according to the rules below:
+
+1. Straight Flush (self.rank = 5): either three cards of sequential rank, or Ace, 2, and 3, all of the same suit.
+2. Three of a Kind (self.rank = 4): three cards of the same rank.
+3. Straight (self.rank = 3): either three cards of sequential rank or Ace, 2, and 3, not all
+of the same suit.
+4. Flush (self.rank = 2): three cards of the same suit, not sequential rank.
+5. Pair (self.rank = 1): two cards of the same rank, no other matches.
+6. Nothing (self.rank = 0): everything else. The convention is to refer to a Nothing hand by the rank of its highest card. For example, a Nothing hand in which 10 of Spades is the highest ranked card will be called ”10-High”. This is reflected in the implementation of the provided __str__() method.
+
 
 ### Comparing the Hands
 The rules for comparing two hands in the game of Three-Hand Poker:
