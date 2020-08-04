@@ -6,15 +6,15 @@ A simplified version of the Three Card Poker game written in Python
 ## PokerHand.py
 
 ### Comparing the Hands
-Below are the rules for comparing two hands in the game of Three-Hand Poker:
+The rules for comparing two hands in the game of Three-Hand Poker:
 1. If the hand rankings are not equal, then the hand with a higher ranking wins.
 2. If the hand rankings are the same, then the following tie-breaking procedure is applied:
-(a) If the hands are either both Straight Flush or both Straight, then the highest rank of any card in one hand is compared to the highest rank of any card in the other hand. For the Straight Flush hands that include an Ace, the highest rank is 3 (not Ace!). Otherwise, the highest rank is the rank of a card with the highest rank. If the highest ranks are distinct, then the hand with a higher ranked card wins. Otherwise, it is a tie.
+    1. If the hands are either both Straight Flush or both Straight, then the highest rank of any card in one hand is compared to the highest rank of any card in the other hand. For the Straight Flush hands that include an Ace, the highest rank is 3 (not Ace!). Otherwise, the highest rank is the rank of a card with the highest rank. If the highest ranks are distinct, then the hand with a higher ranked card wins. Otherwise, it is a tie.
 Examples: ”9 of Diamonds, 10 of Diamonds, Jack of Diamonds” beats ”7 of Spades, 8 of Spades, 9 of Spades”, ”Queen of Hearts, King of Diamonds, Ace of Clubs” beats ”Ace of Hearts, 2 of Diamonds, 3 of Spades”, and ”7 of Spades, 8 of Spades, 9 of Spades” and ”7 of Clubs, 8 of Clubs, 9 of Clubs” is a tie.
-(b) If the hands are both Three of a Kind, then the rank of an arbitrary card in one hand is compared to the rank of an arbitrary card in the other hand, and the hand with a higher ranked card wins. Note that a tie is impossible in this case.
-(c) If the hands are either both Flush or both Nothing, then each hand is sorted in the reverse order of their ranks, and the outcome is computed by comparing the resulting rank triples to each other in the lexicographical order. That is, the highest ranks in both hands are first compared to each other, and if they are distinct, then the hand with a higher ranked card wins. Otherwise, the second highest ranks are compared to each other, and so force. If all respective ranks in both hands are equal, it is a tie.
+    2. If the hands are both Three of a Kind, then the rank of an arbitrary card in one hand is compared to the rank of an arbitrary card in the other hand, and the hand with a higher ranked card wins. Note that a tie is impossible in this case.
+    3. If the hands are either both Flush or both Nothing, then each hand is sorted in the reverse order of their ranks, and the outcome is computed by comparing the resulting rank triples to each other in the lexicographical order. That is, the highest ranks in both hands are first compared to each other, and if they are distinct, then the hand with a higher ranked card wins. Otherwise, the second highest ranks are compared to each other, and so force. If all respective ranks in both hands are equal, it is a tie.
 Examples: ”Ace of Diamonds”, ”10 of Diamonds”, ”2 of Diamonds” beats ”King of Spades”, ”Jack of Spades”, ”10 of Spades”.
-(d) If both hands are Pairs, then the respective ranks of the paired cards are first compared to each other. If they are distinct, then the hand with a higher ranked card wins. Otherwise, the outcome is determined by comparing the ranks of the highest ranked cards in both hands.
+    4. If both hands are Pairs, then the respective ranks of the paired cards are first compared to each other. If they are distinct, then the hand with a higher ranked card wins. Otherwise, the outcome is determined by comparing the ranks of the highest ranked cards in both hands.
 Examples: ”3 of Diamonds, 3 of Clubs, 2 of Spades” beats ”2 of Clubs, 2 of Hearts, Ace of Spades”, ”2 of Clubs, 2 of Hearts, Ace of Spades” beats ”2 of Diamonds, 2 of Spades, King of Hearts”, ”3 of Diamonds, 3 of Clubs, 2 of Spades” and ”3 of Clubs, 3 of Spades, 2 of Hearts” is a tie.
 
 ## Poker.py
