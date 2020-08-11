@@ -1,6 +1,9 @@
 # Three Card Poker Game
 A simplified version of the Three Card Poker game written in Python. This implementation relies on Python language features including object-oriented programming, mutable compound data types (such as lists and dictionaries), and moderately complex control flows to support various parts of the game logic.
 
+Three Card Poker is actually two games in one: 
+There is the Play/Ante game where you are playing against the dealer to see who has the highest hand. There is also the Pair Plus game where you are wagering on whether or not you will be dealt a pair or better.
+
 ## Card.py
 ### Classes
 This file contains implementations of the following three classes representing entities found in any card game:
